@@ -37,6 +37,8 @@ Los recordatorios también aparecen visibles dentro de la página, en las tarjet
 - Mensaje: `Hola, quería consultar por un servicio de aire acondicionado.`
 - Dirección: Fernando Fader 405, Río Cuarto, Córdoba, Argentina.
 
+Los CTA de Instalación, Mantenimiento y Reparación usan mensajes específicos para que el técnico reciba el contexto de la consulta. El resto de los accesos utiliza el mensaje general indicado arriba.
+
 Las constantes editables están al inicio de `app/page.tsx`.
 
 ## Imágenes IA reemplazables

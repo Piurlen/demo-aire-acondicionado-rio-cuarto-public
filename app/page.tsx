@@ -3,9 +3,14 @@ import { Reveal } from "@/components/Reveal";
 
 const PHONE_DISPLAY = "+54 358 438-2754";
 const PHONE_TEL = "+543584382754";
-const WHATSAPP_URL =
-  "https://wa.me/543584382754?text=Hola%2C%20quer%C3%ADa%20consultar%20por%20un%20servicio%20de%20aire%20acondicionado.";
+const DEFAULT_WHATSAPP_MESSAGE = "Hola, quería consultar por un servicio de aire acondicionado.";
+const WHATSAPP_URL = createWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE);
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Fernando+Fader+405%2C+Rio+Cuarto%2C+Cordoba%2C+Argentina";
+const PUBLIC_LISTING_URL = "https://poraca.com.ar/tecnico-aire-acondicionado/cordoba/rio-cuarto/tecnico-en-aire-acondicionado/";
+
+function createWhatsAppUrl(message: string) {
+  return `https://wa.me/543584382754?text=${encodeURIComponent(message)}`;
+}
 
 function Icon({ name }: { name: "snow" | "phone" | "pin" | "star" | "check" | "arrow" | "whatsapp" | "home" | "store" | "tool" | "message" }) {
   const paths = {
@@ -15,7 +20,7 @@ function Icon({ name }: { name: "snow" | "phone" | "pin" | "star" | "check" | "a
     star: <path d="m12 2.7 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.3l6.2-.9L12 2.7Z" />,
     check: <path d="m5 12 4 4L19 6" />,
     arrow: <><path d="M5 12h14M13 6l6 6-6 6" /></>,
-    whatsapp: <><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z" /><path d="M8.2 7.8c.3 3.6 3 6.3 6.6 6.6M8.8 7.4l1.3 2.2-1 1M14.8 13l-1.1 1 2.3 1.2" /></>,
+    whatsapp: <path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.1c-.2.6-1.3 1.2-1.8 1.3-.5.1-1.1.2-1.8 0-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1 0-1.5.8-2.2 1.1-2.5.3-.3.6-.4.9-.4h.6c.2 0 .4-.1.7.5l.9 2.1c.1.2.1.5 0 .7l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.8 2.1 1.2 1.1 2.3 1.5 2.6 1.7.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.3.7-.2l2 .9c.3.1.5.2.6.4.1.1.1.7-.1 1.5Z" />,
     home: <><path d="m3 11 9-8 9 8" /><path d="M5 10v10h14V10M9 20v-6h6v6" /></>,
     store: <><path d="M4 10v10h16V10M3 4h18l-2 6H5L3 4ZM8 10v10M16 10v10" /></>,
     tool: <><path d="M14.7 6.3a4 4 0 0 0-5-5L7.6 3.4l3 3 2.1-2.1a4 4 0 0 0 2 2ZM9.3 7.7 3 14a2.1 2.1 0 0 0 3 3l6.3-6.3" /></>,
@@ -24,8 +29,8 @@ function Icon({ name }: { name: "snow" | "phone" | "pin" | "star" | "check" | "a
   return <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">{paths[name]}</svg>;
 }
 
-function WhatsAppLink({ className = "button button-primary", children = "Consultar por WhatsApp", location }: { className?: string; children?: React.ReactNode; location: string }) {
-  return <a className={className} href={WHATSAPP_URL} target="_blank" rel="noreferrer" data-cta={`whatsapp-${location}`}><Icon name="whatsapp" />{children}</a>;
+function WhatsAppLink({ className = "button button-primary", children = "Consultar por WhatsApp", location, message = DEFAULT_WHATSAPP_MESSAGE }: { className?: string; children?: React.ReactNode; location: string; message?: string }) {
+  return <a className={className} href={createWhatsAppUrl(message)} target="_blank" rel="noreferrer" data-cta={`whatsapp-${location}`}><Icon name="whatsapp" />{children}</a>;
 }
 
 export default function Home() {
@@ -73,14 +78,14 @@ export default function Home() {
             </Reveal>
             <div className="service-grid">
               {[
-                ["01", "Instalación", "Evaluación del espacio y colocación del equipo según cada ambiente.", "home"],
-                ["02", "Mantenimiento", "Revisión y limpieza para cuidar el funcionamiento de tu equipo.", "snow"],
-                ["03", "Reparación", "Diagnóstico técnico ante fallas o funcionamiento irregular.", "tool"],
-              ].map(([n, title, text, icon]) => (
+                ["01", "Instalación", "Evaluación del espacio y colocación del equipo según cada ambiente.", "home", "Hola, quiero instalar un aire acondicionado. ¿Podrían darme más información y orientarme sobre el precio?"],
+                ["02", "Mantenimiento", "Revisión y limpieza para cuidar el funcionamiento de tu equipo.", "snow", "Hola, quiero consultar por el mantenimiento de un aire acondicionado. ¿Podrían darme más información?"],
+                ["03", "Reparación", "Diagnóstico técnico ante fallas o funcionamiento irregular.", "tool", "Hola, quiero consultar por la reparación de un aire acondicionado. ¿Podrían darme más información?"],
+              ].map(([n, title, text, icon, message]) => (
                 <Reveal className="service-card" key={title}>
                   <div className="card-top"><span>{n}</span><span className="card-icon"><Icon name={icon as "home"} /></span></div>
                   <h3>{title}</h3><p>{text}</p>
-                  <WhatsAppLink location={`service-${title.toLowerCase()}`} className="text-link">Consultar <Icon name="arrow" /></WhatsAppLink>
+                  <WhatsAppLink location={`service-${title.toLowerCase()}`} className="text-link" message={message}>Consultar <Icon name="arrow" /></WhatsAppLink>
                   <small className="confirm-label">Servicio a confirmar con el cliente</small>
                 </Reveal>
               ))}
@@ -124,6 +129,7 @@ export default function Home() {
         <section className="section reviews" id="resenas">
           <div className="container">
             <Reveal className="section-heading centered"><span className="kicker">Reputación pública</span><h2>La confianza también se construye con experiencias reales.</h2><div className="rating-summary"><strong>4.9</strong><span><b>★★★★★</b><small>Aproximadamente 49 reseñas públicas</small></span></div></Reveal>
+            <Reveal className="review-source-note"><Icon name="check" /><p><strong>Calificación pública verificada.</strong> La fuente consultada muestra 4.9/5 y 49 opiniones, pero no publica autores ni comentarios individuales. <a href={PUBLIC_LISTING_URL} target="_blank" rel="noreferrer">Ver ficha pública</a>.</p></Reveal>
             <div className="review-grid" aria-label="Espacios reservados para reseñas reales">
               {[1,2,3].map((n) => <Reveal className="review-placeholder" key={n}><span className="placeholder-badge">Pendiente de contenido real</span><div className="placeholder-lines"><i /><i /><i /></div><div className="placeholder-person"><span /><p><i /><i /></p></div><small>Reemplazar por una reseña pública verificada antes de publicar.</small></Reveal>)}
             </div>
@@ -162,6 +168,7 @@ export default function Home() {
         <div className="container footer-grid"><div className="footer-brand"><span className="brand-mark"><Icon name="snow" /></span><p><strong>Servicio técnico de aire acondicionado</strong><span>Atención local en Río Cuarto.</span></p></div><div><small>Contacto</small><a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a><a href={WHATSAPP_URL} target="_blank" rel="noreferrer">WhatsApp</a></div><div><small>Ubicación</small><a href={MAPS_URL} target="_blank" rel="noreferrer">Fernando Fader 405<br />Río Cuarto, Córdoba</a></div><div><small>Enlaces</small><a href="#soluciones">Soluciones</a><a href="#preguntas">Preguntas frecuentes</a></div></div>
         <div className="container footer-bottom"><p>© {new Date().getFullYear()} · Demo comercial de servicio técnico.</p><p><strong>Antes de publicar:</strong> confirmar nombre comercial, servicios, reseñas, alcance de atención y reemplazar imágenes IA si corresponde.</p></div>
       </footer>
+      <WhatsAppLink location="floating" className="floating-whatsapp"><span className="sr-only">Consultar por WhatsApp</span><span className="floating-label" aria-hidden="true">Escribinos</span></WhatsAppLink>
       <div className="mobile-actions" aria-label="Acciones de contacto"><a href={`tel:${PHONE_TEL}`}><Icon name="phone" />Llamar</a><WhatsAppLink location="mobile" className="mobile-whatsapp">WhatsApp</WhatsAppLink></div>
     </>
   );
