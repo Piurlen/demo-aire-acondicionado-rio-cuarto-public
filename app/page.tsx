@@ -3,7 +3,7 @@ import { Reveal } from "@/components/Reveal";
 
 const PHONE_DISPLAY = "+54 358 438-2754";
 const PHONE_TEL = "+543584382754";
-const DEFAULT_WHATSAPP_MESSAGE = "Hola, quería consultar por un servicio de aire acondicionado.";
+const DEFAULT_WHATSAPP_MESSAGE = "Hola Fabián, quiero consultar por un servicio de aire acondicionado.";
 const WHATSAPP_URL = createWhatsAppUrl(DEFAULT_WHATSAPP_MESSAGE);
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Fernando+Fader+405%2C+Rio+Cuarto%2C+Cordoba%2C+Argentina";
 const PUBLIC_LISTING_URL = "https://poraca.com.ar/tecnico-aire-acondicionado/cordoba/rio-cuarto/tecnico-en-aire-acondicionado/";
@@ -57,14 +57,14 @@ export default function Home() {
           <div className="container hero-content">
             <div className="eyebrow"><span /> Servicio local en Río Cuarto</div>
             <h1>Climatización<br /><em>profesional</em> en<br />Río Cuarto</h1>
-            <p>Servicio técnico de aire acondicionado con atención directa y soluciones para tu hogar o comercio.</p>
+            <p>Servicio técnico de aire acondicionado con atención directa de Fabián Fuentes y soluciones para tu hogar o comercio.</p>
             <div className="hero-actions">
               <WhatsAppLink location="hero" />
               <a className="button button-secondary" href={`tel:${PHONE_TEL}`} data-cta="phone-hero"><Icon name="phone" />Llamar ahora</a>
             </div>
           </div>
           <div className="container trust-bar" aria-label="Indicadores de confianza">
-            <div><span className="trust-icon"><Icon name="star" /></span><p><strong>4.9 <span>★</span></strong><small>Valoración pública</small></p></div>
+            <div><span className="trust-icon"><Icon name="star" /></span><p><strong>5.0 <span>★</span></strong><small>Valoración pública</small></p></div>
             <div><span className="trust-icon"><Icon name="pin" /></span><p><strong>Río Cuarto</strong><small>Atención local</small></p></div>
             <div><span className="trust-icon"><Icon name="message" /></span><p><strong>Consulta directa</strong><small>WhatsApp o teléfono</small></p></div>
           </div>
@@ -78,15 +78,14 @@ export default function Home() {
             </Reveal>
             <div className="service-grid">
               {[
-                ["01", "Instalación", "Evaluación del espacio y colocación del equipo según cada ambiente.", "home", "Hola, quiero instalar un aire acondicionado. ¿Podrían darme más información y orientarme sobre el precio?"],
-                ["02", "Mantenimiento", "Revisión y limpieza para cuidar el funcionamiento de tu equipo.", "snow", "Hola, quiero consultar por el mantenimiento de un aire acondicionado. ¿Podrían darme más información?"],
-                ["03", "Reparación", "Diagnóstico técnico ante fallas o funcionamiento irregular.", "tool", "Hola, quiero consultar por la reparación de un aire acondicionado. ¿Podrían darme más información?"],
+                ["01", "Instalación", "Evaluación del espacio y colocación del equipo según cada ambiente.", "home", "Hola Fabián, quiero consultar por instalación de aire acondicionado."],
+                ["02", "Mantenimiento", "Revisión y limpieza para cuidar el funcionamiento de tu equipo.", "snow", "Hola Fabián, necesito mantenimiento de un aire acondicionado."],
+                ["03", "Reparación", "Diagnóstico técnico ante fallas o funcionamiento irregular.", "tool", "Hola Fabián, quiero consultar por reparación de un aire acondicionado."],
               ].map(([n, title, text, icon, message]) => (
                 <Reveal className="service-card" key={title}>
                   <div className="card-top"><span>{n}</span><span className="card-icon"><Icon name={icon as "home"} /></span></div>
                   <h3>{title}</h3><p>{text}</p>
                   <WhatsAppLink location={`service-${title.toLowerCase()}`} className="text-link" message={message}>Consultar <Icon name="arrow" /></WhatsAppLink>
-                  <small className="confirm-label">Servicio a confirmar con el cliente</small>
                 </Reveal>
               ))}
             </div>
@@ -128,21 +127,18 @@ export default function Home() {
 
         <section className="section reviews" id="resenas">
           <div className="container">
-            <Reveal className="section-heading centered"><span className="kicker">Reputación pública</span><h2>La confianza también se construye con experiencias reales.</h2><div className="rating-summary"><strong>4.9</strong><span><b>★★★★★</b><small>Aproximadamente 49 reseñas públicas</small></span></div></Reveal>
-            <Reveal className="review-source-note"><Icon name="check" /><p><strong>Calificación pública verificada.</strong> La fuente consultada muestra 4.9/5 y 49 opiniones, pero no publica autores ni comentarios individuales. <a href={PUBLIC_LISTING_URL} target="_blank" rel="noreferrer">Ver ficha pública</a>.</p></Reveal>
-            <div className="review-grid" aria-label="Espacios reservados para reseñas reales">
-              {[1,2,3].map((n) => <Reveal className="review-placeholder" key={n}><span className="placeholder-badge">Pendiente de contenido real</span><div className="placeholder-lines"><i /><i /><i /></div><div className="placeholder-person"><span /><p><i /><i /></p></div><small>Reemplazar por una reseña pública verificada antes de publicar.</small></Reveal>)}
-            </div>
+            <Reveal className="section-heading centered"><span className="kicker">Reputación pública</span><h2>La confianza también se construye con experiencias reales.</h2><div className="rating-summary"><strong>5.0</strong><span><b>★★★★★</b><small>Aproximadamente 41 reseñas públicas</small></span></div></Reveal>
+            <Reveal className="review-source-note"><Icon name="check" /><p><strong>Calificación pública.</strong> 5/5 con aproximadamente 41 reseñas. <a href={PUBLIC_LISTING_URL} target="_blank" rel="noreferrer">Ver ficha pública</a>.</p></Reveal>
           </div>
         </section>
 
         <section className="section coverage" id="cobertura">
           <div className="container coverage-grid">
             <Reveal className="coverage-copy"><span className="kicker">Área de cobertura</span><h2>Estamos en Río Cuarto, Córdoba.</h2><p>Podés encontrarnos en Fernando Fader 405. Consultá directamente para confirmar atención en tu zona.</p><a className="button button-outline" href={MAPS_URL} target="_blank" rel="noreferrer"><Icon name="pin" />Ver ubicación</a></Reveal>
-            <Reveal className="map-placeholder">
+            <Reveal className="map-panel">
               <div className="map-grid" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
               <div className="map-pin"><Icon name="pin" /></div>
-              <div className="map-card"><small>Ubicación verificada</small><strong>Fernando Fader 405</strong><span>Río Cuarto, Córdoba</span><em>Bloque preparado para Google Maps</em></div>
+              <div className="map-card"><small>Ubicación</small><strong>Fernando Fader 405</strong><span>Río Cuarto, Córdoba</span></div>
             </Reveal>
           </div>
         </section>
@@ -166,7 +162,7 @@ export default function Home() {
 
       <footer>
         <div className="container footer-grid"><div className="footer-brand"><span className="brand-mark"><Icon name="snow" /></span><p><strong>Servicio técnico de aire acondicionado</strong><span>Atención local en Río Cuarto.</span></p></div><div><small>Contacto</small><a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a><a href={WHATSAPP_URL} target="_blank" rel="noreferrer">WhatsApp</a></div><div><small>Ubicación</small><a href={MAPS_URL} target="_blank" rel="noreferrer">Fernando Fader 405<br />Río Cuarto, Córdoba</a></div><div><small>Enlaces</small><a href="#soluciones">Soluciones</a><a href="#preguntas">Preguntas frecuentes</a></div></div>
-        <div className="container footer-bottom"><p>© {new Date().getFullYear()} · Demo comercial de servicio técnico.</p><p><strong>Antes de publicar:</strong> confirmar nombre comercial, servicios, reseñas, alcance de atención y reemplazar imágenes IA si corresponde.</p></div>
+        <div className="container footer-bottom"><p>© {new Date().getFullYear()} · Servicio técnico de aire acondicionado.</p></div>
       </footer>
       <WhatsAppLink location="floating" className="floating-whatsapp"><span className="sr-only">Consultar por WhatsApp</span><span className="floating-label" aria-hidden="true">Escribinos</span></WhatsAppLink>
       <div className="mobile-actions" aria-label="Acciones de contacto"><a href={`tel:${PHONE_TEL}`}><Icon name="phone" />Llamar</a><WhatsAppLink location="mobile" className="mobile-whatsapp">WhatsApp</WhatsAppLink></div>

@@ -10,7 +10,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ??
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Servicio técnico de aire acondicionado en Río Cuarto",
+  title: "Fabián Fuentes | Servicio técnico de aire acondicionado en Río Cuarto",
   description,
   keywords: [
     "aire acondicionado Río Cuarto",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "Córdoba",
   ],
   openGraph: {
-    title: "Climatización profesional en Río Cuarto",
+    title: "Fabián Fuentes | Climatización profesional en Río Cuarto",
     description,
     locale: "es_AR",
     type: "website",

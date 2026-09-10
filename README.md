@@ -1,6 +1,6 @@
-# Demo — Servicio técnico de aire acondicionado
+# Fabián Fuentes — Servicio técnico de aire acondicionado
 
-Landing page comercial en Next.js para un servicio técnico ubicado en Río Cuarto, Córdoba.
+Landing comercial en Next.js para el servicio técnico de aire acondicionado de Fabián Fuentes, ubicado en Río Cuarto, Córdoba.
 
 ## Ejecutar
 
@@ -18,30 +18,20 @@ pnpm start
 
 El proyecto no usa backend, base de datos, autenticación ni servicios externos obligatorios. Se puede importar directamente en Vercel. Para fijar la URL canónica de metadata se puede configurar `NEXT_PUBLIC_SITE_URL`.
 
-## Datos a confirmar antes de publicar
-
-- Nombre comercial exacto.
-- Servicios ofrecidos: instalación, mantenimiento y reparación aparecen como contenido editable y deben confirmarse.
-- Textos descriptivos de cada servicio.
-- Alcance geográfico y disponibilidad de atención.
-- Reseñas: las tarjetas actuales son placeholders; deben reemplazarse exclusivamente por reseñas públicas reales autorizadas/verificadas.
-- Condiciones de presupuestos o políticas comerciales, si se desean agregar.
-- Fotografías: los assets actuales fueron generados con IA para esta demo.
-
-Los recordatorios también aparecen visibles dentro de la página, en las tarjetas de servicios, la sección de reseñas y el footer.
+La web presenta información de contacto, servicios y ubicación de atención de Fabián Fuentes.
 
 ## Contacto configurado
 
 - Teléfono: `+54 358 438-2754`
 - WhatsApp: `543584382754`
-- Mensaje: `Hola, quería consultar por un servicio de aire acondicionado.`
+- Mensaje general: `Hola Fabián, quiero consultar por un servicio de aire acondicionado.`
 - Dirección: Fernando Fader 405, Río Cuarto, Córdoba, Argentina.
 
 Los CTA de Instalación, Mantenimiento y Reparación usan mensajes específicos para que el técnico reciba el contexto de la consulta. El resto de los accesos utiliza el mensaje general indicado arriba.
 
 Las constantes editables están al inicio de `app/page.tsx`.
 
-## Imágenes IA reemplazables
+## Imágenes del sitio
 
 Cada fotografía es un asset independiente consumido mediante `next/image`. Se puede reemplazar manteniendo el mismo nombre y una relación horizontal similar:
 
